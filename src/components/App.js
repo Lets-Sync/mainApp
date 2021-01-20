@@ -8,7 +8,7 @@ class App extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text>Test Test 2</Text>
+        <Text>Test Test 5</Text>
         <StatusBar style="auto" />
       </View>
     );
