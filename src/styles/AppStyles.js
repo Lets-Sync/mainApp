@@ -7,4 +7,19 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    color: '#ffffff',
+    fontSize: 34,
+  },
+  headerFooterStyle: {
+    width: '100%',
+    height: 45,
+    backgroundColor: '#24305E',
+  },
+  textStyle: {
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 18,
+    padding: 7,
+  },
 });
