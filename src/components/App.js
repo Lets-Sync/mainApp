@@ -24,7 +24,6 @@ const list = [
   },
   {
     name: 'Group 6'
-  }
 ]
 
 // TODO: refactor this to be its own component
