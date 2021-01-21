@@ -4,6 +4,7 @@ import React from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { Header, ListItem, Avatar } from 'react-native-elements'
 import { styles } from '../styles/AppStyles.js';
+import Splash from './Splash.js'
 
 // TODO: make this dynamically render from db
 const list = [
