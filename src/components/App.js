@@ -3,17 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { styles } from '../styles/AppStyles.js';
+import Splash from './Splash.js'
 
-class App extends React.Component {
-  render () {
-    return (
-      <View style={styles.container}>
-        <Text>Test Test 5</Text>
-        <StatusBar style="auto" />
-      </View>
-    );
-  }
-}
 
 export default registerRootComponent(App);
 
