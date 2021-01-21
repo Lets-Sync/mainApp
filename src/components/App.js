@@ -25,7 +25,8 @@ const list = [
   },
   {
     name: 'Group 6'
-]
+  },
+];
 
 // TODO: refactor this to be its own component
 const ListFooter = () => {
@@ -38,9 +39,9 @@ const ListFooter = () => {
 };
 
 const App = () => {
-  
+
   const keyExtractor = (item, index) => index.toString()
-  
+
   const renderItem = ({ item }) => (
     <ListItem bottomDivider>
       <ListItem.Content>
