@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { Header, ListItem, Avatar } from 'react-native-elements'
+import { StatusBar } from 'expo-status-bar';
 import { styles } from '../styles/AppStyles.js';
 
 // TODO: make this dynamically render from db
@@ -52,7 +53,7 @@ const Home = () => {
         backgroundColor='#374785'
         leftComponent={{ icon: 'menu', color: '#fff', style: styles.textStyle }}
         centerComponent={{ text: "LET'S SYNC", style: styles.textStyle }}
-        rightComponent={{ icon: 'home', color: '#fff', style: styles.textStyle }}
+        rightComponent={{ icon: 'search', color: '#fff', style: styles.textStyle }}
       />
       <FlatList
         keyExtractor={keyExtractor}
