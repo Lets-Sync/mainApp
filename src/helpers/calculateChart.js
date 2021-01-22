@@ -31,6 +31,9 @@ const calculateChart = (data) => {
     for (let key in tracker) {
         results.push((tracker[key] / data.length * 100).toFixed(0));
     }
+    // hardcode solution to fix the calculation of the chart due to weird ordering of using let keys
+    let temp = results.pop();
+    results.unshift(temp);
 
     return results;
 }
