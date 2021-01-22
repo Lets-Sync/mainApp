@@ -5,6 +5,8 @@ import Chart from './Chart.js';
 import ListModal from './ListModal.js';
 import People from './People.js';
 import calculateChart from '../helpers/calculateChart.js';
+import Invite from './Invite.js';
+import InviteModal from './InviteModal.js'
 
 const exampleData = [
     {name: "Ted", range: "12-5"},
@@ -17,22 +19,22 @@ const exampleData = [
 ]
 
 export default function Schedule (props) {
-    const [people, setPeople] = useState([])
+    const [people, setPeople] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+    const [addModalVisible, setAddModalVisible] = useState(false);
     const [selectedTime, setSelectedTime] = useState(0);
     const [labels] = useState([12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    const [data, setData] = useState(calculateChart(exampleData))
   
     // const data = [0, 25, 50, 75, 100, 80, 20, 30, 10, 50, 70]
-    const data = calculateChart(exampleData);
+    // const data = calculateChart(exampleData);
     
-
-
     const getDateString = () => {
       const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
       const date = new Date();
       return `Current Schedule for ${months[date.getMonth()]} ${date.getDate()}, ${date.getUTCFullYear()}`
     }
-
+  
     const getBestTime = (times) => {
       return `Looks like the best time to meet is: ${labels[data.indexOf((Math.max(...times)).toString())]}:00`
     }
@@ -43,9 +45,10 @@ export default function Schedule (props) {
                 backgroundColor='#374785'
                 leftComponent={{ icon: 'menu', color: '#fff' }}
                 centerComponent={{ text: "LET'S SYNC", color: '#fff', style: {color: "#fff", fontSize: 18} }}
-                rightComponent={{ icon: 'home', color: '#fff'}}
+                rightComponent={<Invite setAddModalVisible={setAddModalVisible}/>}
             />
             <ListModal selectedTime={selectedTime} visible={modalVisible} setModalVisible={setModalVisible} data={exampleData}/>
+            <InviteModal visible={addModalVisible} setAddModalVisible={setAddModalVisible} />
             <ScrollView>
                 <Chart data={data} labels={labels} setSelectedTime={setSelectedTime} setModalVisible={setModalVisible}/>
                 <Text style={styles.text}>

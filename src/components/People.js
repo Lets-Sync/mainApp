@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Animated, TouchableHighlight, TouchableOpacity, StatusBar } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { styles } from '../styles/AppStyles.js';
 import Person from './Person.js';
 
 
