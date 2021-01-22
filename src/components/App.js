@@ -1,19 +1,37 @@
-import React from 'react';
-import { Text, View, FlatList } from 'react-native';
-import { Header, ListItem, Avatar } from 'react-native-elements'
-import { styles } from '../styles/AppStyles.js';
-import Login from './Login.js'
+import React, { useState, useEffect } from 'react';
 import { registerRootComponent } from 'expo';
-import Splash from './Splash.js';
+import { Text } from 'react-native';
+import Login from './Login.js'
 import Home from './Home.js';
 import Schedule from './Schedule.js';
 
-const App = () => {
-  return (
-    <Schedule />
-  )
+const app = () => {
+  const [page, setPage] = useState('login');
+
+  useEffect(() => {
+    console.log('changed')
+  }, [ page ]);
+
+  if (page === 'login') {
+    return (
+    <Login setPage={setPage}/>
+    )
+  } else if (page === 'home') {
+    return (
+      <Home setPage={setPage} />
+    )
+  } else if (page === 'schedule') {
+    return (
+      <Schedule setPage={setPage} />
+    )
+  } else {
+    return (
+      <Text style={{marginTop: 100}}>Failed</Text>
+    )
+  }
+
 }
 
-export default registerRootComponent(App);
+export default registerRootComponent(app);
 
 
