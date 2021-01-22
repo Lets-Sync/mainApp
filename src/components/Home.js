@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { Header, ListItem, Avatar } from 'react-native-elements'
 import { StatusBar } from 'expo-status-bar';
-import { styles } from '../styles/AppStyles.js';
+import { styles } from '../styles/HomeStyles.js';
 
 // TODO: make this dynamically render from db
 const list = [
@@ -26,19 +26,20 @@ const list = [
   },
 ];
 
-const Home = () => {
+const Home = (props) => {
   const handleGroupPress = () => {
-    
+
   }
 
   const keyExtractor = (item, index) => index.toString()
 
   const renderItem = ({ item }) => (
-    <ListItem 
+    <ListItem
       bottomDivider
       containerStyle={{ backgroundColor: '#465078' }}
       activeOpacity={0.6}
       underlayColor='#465078'
+      onPress={() => {props.setPage('schedule')}}
     >
       <ListItem.Content>
         <ListItem.Title style={{ color: '#ffffff' }}>{item.name}</ListItem.Title>
