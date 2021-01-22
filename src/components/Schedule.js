@@ -4,6 +4,17 @@ import { Header } from 'react-native-elements'
 import Chart from './Chart.js';
 import ListModal from './ListModal.js';
 import People from './People.js';
+import calculateChart from '../helpers/calculateChart.js';
+
+const exampleData = [
+    {name: "Ted", range: "12-5"},
+    {name: "Jeff", range: "1-6"},
+    {name: "Terry", range: "2-4"},
+    {name: "Nadiya", range: "3-7"},
+    {name: "Josh", range: "12-8"},
+    {name: "Howard", range: "4-9"},
+    {name: "Tony", range: "6-10"},
+]
 
 export default function Schedule () {
     const [people, setPeople] = useState([])
@@ -11,7 +22,8 @@ export default function Schedule () {
     const [selectedTime, setSelectedTime] = useState(0);
     const [labels] = useState([12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   
-    const data = [0, 25, 50, 75, 100, 80, 20, 30, 10, 50, 70]
+    // const data = [0, 25, 50, 75, 100, 80, 20, 30, 10, 50, 70]
+    const data = calculateChart(exampleData);
     
     const getDateString = () => {
       const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -20,7 +32,7 @@ export default function Schedule () {
     }
   
     const getBestTime = (times) => {
-      return `Looks like the best time to meet is: ${labels[data.indexOf(Math.max(...times))]}:00`
+      return `Looks like the best time to meet is: ${labels[data.indexOf((Math.max(...times)).toString())]}:00`
     }
 
     return (
@@ -29,9 +41,9 @@ export default function Schedule () {
                 backgroundColor='#374785'
                 leftComponent={{ icon: 'menu', color: '#fff' }}
                 centerComponent={{ text: "LET'S SYNC", color: '#fff', style: {color: "#fff", fontSize: 18} }}
-                rightComponent={{ icon: 'search', color: '#fff'}}
+                rightComponent={{ icon: 'home', color: '#fff'}}
             />
-            <ListModal selectedTime={selectedTime} visible={modalVisible} setModalVisible={setModalVisible}/>
+            <ListModal selectedTime={selectedTime} visible={modalVisible} setModalVisible={setModalVisible} data={exampleData}/>
             <ScrollView>
                 <Chart data={data} labels={labels} setSelectedTime={setSelectedTime} setModalVisible={setModalVisible}/>
                 <Text style={styles.text}>

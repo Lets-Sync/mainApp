@@ -8,15 +8,6 @@ import {
     View
 } from 'react-native';
 
-const exampleData = [
-    {name: "Ted", range: "12-5"},
-    {name: "Jeff", range: "1-6"},
-    {name: "Terry", range: "2-4"},
-    {name: "Nadiya", range: "3-7"},
-    {name: "Josh", range: "12-8"},
-    {name: "Howard", range: "4-9"},
-    {name: "Tony", range: "6-10"},
-]
 
 export default function ListModal(props) {
   return (
@@ -32,7 +23,7 @@ export default function ListModal(props) {
             <View style={styles.modalView}>
             <Text style={styles.modalText}>Here are the people available at {props.selectedTime}:00</Text>
             {
-                exampleData.map((user) => {
+                props.data.map((user) => {
                     let times = user.range.split('-');
                     if (props.selectedTime >= Number(times[0]) && props.selectedTime <= Number(times[1])) {
                         return (
