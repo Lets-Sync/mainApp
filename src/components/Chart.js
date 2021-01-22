@@ -4,13 +4,13 @@ import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
 
 export default function Chart(props) {
-    const labels = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    
     const screenWidth = Dimensions.get("window").width;
 
     return (
         <LineChart
             data={{
-              labels: labels,
+              labels: props.labels,
               datasets: [
                 {
                   data: props.data
@@ -20,10 +20,10 @@ export default function Chart(props) {
             width={screenWidth} // from react-native
             height={320}
             yAxisSuffix="%"
-            // onDataPointClick={(currentPoint) => {
-            //   setModalVisible(true);
-            //   setSelectedTime(labels[currentPoint.index])
-            // }}
+            onDataPointClick={(currentPoint) => {
+              props.setModalVisible(true);
+              props.setSelectedTime(props.labels[currentPoint.index])
+            }}
             yAxisInterval={20} // optional, defaults to 1
             chartConfig={{
               backgroundColor: "#f76c6c",
