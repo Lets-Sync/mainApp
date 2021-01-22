@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity, Modal } from 'react-native';
 import { Header, ListItem, Avatar } from 'react-native-elements'
 import { StatusBar } from 'expo-status-bar';
 import { styles } from '../styles/HomeStyles.js';
@@ -27,6 +27,8 @@ const list = [
 ];
 
 const Home = (props) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const handleGroupPress = () => {
 
   }
@@ -49,6 +51,29 @@ const Home = (props) => {
 
   return (
     <View style={styles._homeContainer}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+        }}
+      >
+        <View style={styles._homeCenteredView}>
+          <View style={styles._homeModalView}>
+            <Text style={styles._homeModalText}>Enter group name</Text>
+
+            <TouchableHighlight
+              style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
+            >
+              <Text style={styles._homeTextStyle}>Create group</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </Modal>
       <Header
         backgroundColor='#374785'
         leftComponent={{ icon: 'menu', color: '#fff', style: styles._homeTextStyle }}
@@ -65,7 +90,7 @@ const Home = (props) => {
         title='Create a group'
         accessibilityLabel='Create a new group'
         activeOpacity={0.6}
-        onPress={() => alert('Pressed!')}
+        onPress={() => setModalVisible(true)}
       >
         <View style={styles._homeFooter}>
           <Text style={styles._homeTextStyle}>Create a group</Text>
