@@ -48,12 +48,12 @@ const Home = (props) => {
   );
 
   return (
-    <View style={styles.container}>
+    <View style={styles._homeContainer}>
       <Header
         backgroundColor='#374785'
-        leftComponent={{ icon: 'menu', color: '#fff', style: styles.textStyle }}
-        centerComponent={{ text: "LET'S SYNC", style: styles.textStyle }}
-        rightComponent={{ icon: 'search', color: '#fff', style: styles.textStyle }}
+        leftComponent={{ icon: 'menu', color: '#fff', style: styles._homeTextStyle }}
+        centerComponent={{ text: "LET'S SYNC", style: styles._homeTextStyle }}
+        rightComponent={{ icon: 'search', color: '#fff', style: styles._homeTextStyle }}
       />
       <FlatList
         keyExtractor={keyExtractor}
@@ -67,8 +67,8 @@ const Home = (props) => {
         activeOpacity={0.6}
         onPress={() => alert('Pressed!')}
       >
-        <View style={styles.headerFooterStyle}>
-          <Text style={styles.textStyle}>Create a group</Text>
+        <View style={styles._homeFooter}>
+          <Text style={styles._homeTextStyle}>Create a group</Text>
         </View>
       </TouchableOpacity>
     </View>

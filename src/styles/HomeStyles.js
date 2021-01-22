@@ -1,20 +1,20 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
+  _homeContainer: {
     flex: 1,
     backgroundColor: '#24305E',
   },
-  text: {
+  _homeText: {
     color: '#ffffff',
     fontSize: 34,
   },
-  headerFooterStyle: {
+  _homeFooter: {
     width: '100%',
     height: 45,
     backgroundColor: '#374785',
   },
-  textStyle: {
+  _homeTextStyle: {
     textAlign: 'center',
     color: '#fff',
     fontSize: 18,
