@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   headerFooterStyle: {
     width: '100%',
     height: 45,
-    backgroundColor: '#24305E',
+    backgroundColor: '#374785',
   },
   textStyle: {
     textAlign: 'center',
