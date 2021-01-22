@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { Header, ListItem, Avatar } from 'react-native-elements'
 import { StatusBar } from 'expo-status-bar';
 import { styles } from '../styles/HomeStyles.js';
@@ -38,8 +38,7 @@ const Home = (props) => {
       bottomDivider
       containerStyle={{ backgroundColor: '#465078' }}
       activeOpacity={0.6}
-      underlayColor='#465078'
-      onPress={() => {props.setPage('schedule')}}
+      onPress={() => alert('Pressed!')}
     >
       <ListItem.Content>
         <ListItem.Title style={{ color: '#ffffff' }}>{item.name}</ListItem.Title>
@@ -62,9 +61,16 @@ const Home = (props) => {
         renderItem={renderItem}
       />
       <StatusBar style="auto" />
-      <View style={styles.headerFooterStyle}>
-        <Text style={styles.textStyle}>Create a group</Text>
-      </View>
+      <TouchableOpacity
+        title='Create a group'
+        accessibilityLabel='Create a new group'
+        activeOpacity={0.6}
+        onPress={() => alert('Pressed!')}
+      >
+        <View style={styles.headerFooterStyle}>
+          <Text style={styles.textStyle}>Create a group</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }
