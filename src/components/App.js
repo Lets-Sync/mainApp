@@ -5,6 +5,8 @@ import Login from './Login.js'
 import Home from './Home.js';
 import Schedule from './Schedule.js';
 
+console.disableYelloBox = true;
+
 const app = () => {
   const [page, setPage] = useState('login');
 

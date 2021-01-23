@@ -7,7 +7,7 @@ const login = (props) => {
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [modalVisible, setModalVisible] = React.useState(true);
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   useEffect(() => {}, [username, password, modalVisible]
   );
