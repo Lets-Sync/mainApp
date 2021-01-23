@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Text, View, FlatList, TouchableOpacity, Modal } from 'react-native';
-import { Header, ListItem, Avatar } from 'react-native-elements'
+import React, { useState, useEffect } from 'react';
+import { Text, TextInput, View, FlatList, TouchableOpacity, Modal } from 'react-native';
+import { Header, ListItem, Avatar } from 'react-native-elements';
+import { SwipeListView } from 'react-native-swipe-list-view';
 import { StatusBar } from 'expo-status-bar';
 import { styles } from '../styles/HomeStyles.js';
 
@@ -26,21 +27,66 @@ const list = [
   },
 ];
 
-const Home = (props) => {
+const Home = ({ setPage }) => {
+  const [groups, setGroups] = useState(list);
   const [modalVisible, setModalVisible] = useState(false);
+  const [newGroupName, setNewGroupName] = useState(''); 
+
+  useEffect(() => {}, [groups]);
 
   const handleGroupPress = () => {
-
+    setPage('schedule');
   }
 
-  const keyExtractor = (item, index) => index.toString()
+  const createGroup = () => {
+    if (newGroupName !== '') {
+      const newGroups = [...groups]
+      newGroups.push({
+        name: newGroupName,
+      });
+      setGroups(newGroups);
+      setNewGroupName('');
+    }
+  }
+
+  const leaveGroup = (rowMap, index) => {
+    const newGroups = [...groups];
+    console.log(newGroups);
+    console.log(index);
+    newGroups.splice(index, 1);
+    setGroups(newGroups);
+  }
+
+  const keyExtractor = (item, index) => index.toString();
+
+  const HiddenItemWithActions = props => {
+    const { onLeave } = props;
+
+    return (
+      <View style={styles._homeRowBack}>
+        <TouchableOpacity style={styles._homeBackRightBtn} onPress={onLeave}>
+          <Text>Leave</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+  const renderHiddenItem = (data, rowMap) => {
+    return (
+      <HiddenItemWithActions
+        data={data}
+        rowMap={rowMap}
+        onLeave={() => leaveGroup(rowMap, data.index)}
+      />
+    )
+  }
 
   const renderItem = ({ item }) => (
     <ListItem
       bottomDivider
       containerStyle={{ backgroundColor: '#465078' }}
       activeOpacity={0.6}
-      onPress={() => alert('Pressed!')}
+      onPress={handleGroupPress}
     >
       <ListItem.Content>
         <ListItem.Title style={{ color: '#ffffff' }}>{item.name}</ListItem.Title>
@@ -55,22 +101,24 @@ const Home = (props) => {
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
       >
         <View style={styles._homeCenteredView}>
           <View style={styles._homeModalView}>
             <Text style={styles._homeModalText}>Enter group name</Text>
-
-            <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+            <TextInput
+              style={{ height: 40, width: 120, borderColor: 'gray', borderWidth: 1, marginBottom: 20 }}
+              onChangeText={name => setNewGroupName(name)}
+              value={newGroupName}
+            />
+            <TouchableOpacity 
+              style={{ ...styles._homeOpenButton, backgroundColor: "#374785" }}
               onPress={() => {
                 setModalVisible(!modalVisible);
+                createGroup();
               }}
             >
               <Text style={styles._homeTextStyle}>Create group</Text>
-            </TouchableHighlight>
+            </TouchableOpacity >
           </View>
         </View>
       </Modal>
@@ -80,10 +128,13 @@ const Home = (props) => {
         centerComponent={{ text: "LET'S SYNC", style: styles._homeTextStyle }}
         rightComponent={{ icon: 'search', color: '#fff', style: styles._homeTextStyle }}
       />
-      <FlatList
-        keyExtractor={keyExtractor}
-        data={list}
+      <SwipeListView
+        data={groups}
         renderItem={renderItem}
+        renderHiddenItem={renderHiddenItem}
+        rightOpenValue={-75}
+        keyExtractor={keyExtractor}
+        closeOnRowPress
       />
       <StatusBar style="auto" />
       <TouchableOpacity
