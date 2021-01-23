@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { registerRootComponent } from 'expo';
-import { Text } from 'react-native';
+import { Text, LogBox } from 'react-native';
 import Login from './Login.js'
 import Home from './Home.js';
 import Schedule from './Schedule.js';
 
-console.disableYelloBox = true;
+LogBox.ignoreAllLogs();
 
 const app = () => {
   const [page, setPage] = useState('login');
