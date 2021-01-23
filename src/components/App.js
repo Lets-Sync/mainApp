@@ -8,9 +8,7 @@ import Schedule from './Schedule.js';
 const app = () => {
   const [page, setPage] = useState('login');
 
-  useEffect(() => {
-    console.log('changed')
-  }, [ page ]);
+  useEffect(() => {}, [ page ]);
 
   if (page === 'login') {
     return (

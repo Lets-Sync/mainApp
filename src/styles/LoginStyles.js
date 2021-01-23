@@ -49,6 +49,17 @@ export const styles = StyleSheet.create({
     textAlignVertical: 'center',
     paddingTop: 10,
     paddingRight: 30,
-
-  }
+  },
+  _signUpButton: {
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 60,
+    width: 300,
+    height: 60,
+    backgroundColor: "#A8D0E6",
+    paddingLeft: 30,
+    fontSize: 30,
+    color: 'white',
+    marginBottom: 10,
+  },
 })
