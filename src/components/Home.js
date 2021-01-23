@@ -132,7 +132,7 @@ const Home = ({ setPage }) => {
         renderHiddenItem={renderHiddenItem}
         rightOpenValue={-75}
         keyExtractor={keyExtractor}
-        closeOnRowPress
+        closeOnRowBeginSwipe	
       />
       <StatusBar style="auto" />
       <TouchableOpacity
