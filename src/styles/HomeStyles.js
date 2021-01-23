@@ -20,6 +20,26 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     padding: 7,
   },
+  _homeRowBack: {
+    alignItems: "center",
+    backgroundColor: "#24305E",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  _homeBackRightBtn: {
+    alignItems: "flex-end",
+    bottom: 0,
+    justifyContent: "center",
+    position: "absolute",
+    top: 0,
+    width: 75,
+    paddingRight: 17,
+    backgroundColor: "red",
+    right: 0,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+  },
   _homeCenteredView: {
     flex: 1,
     justifyContent: "center",
@@ -40,6 +60,12 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5
+  },
+  _homeOpenButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
   },
   _homeModalText: {
     marginBottom: 15,
