@@ -4,17 +4,8 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import Person from './Person.js';
 
 
-const exampleData = [
-    {name: "Ted", range: "12-5"},
-    {name: "Jeff", range: "1-6"},
-    {name: "Terry", range: "2-4"},
-    {name: "Nadiya", range: "3-7"},
-    {name: "Josh", range: "12-8"},
-    {name: "Howard", range: "4-9"},
-    {name: "Tony", range: "6-10"},
-]
-
 export default function People (props) {
+    const { exampleData } = props;
     const [listData, setListData] = useState(
         exampleData.map((user, index) => ({
             key: `${index}`,
