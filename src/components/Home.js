@@ -51,8 +51,6 @@ const Home = ({ setPage }) => {
 
   const leaveGroup = (rowMap, index) => {
     const newGroups = [...groups];
-    console.log(newGroups);
-    console.log(index);
     newGroups.splice(index, 1);
     setGroups(newGroups);
   }
